@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+
+
+<!--For small screen the below imageview is not displaying properly
+so make 4 layouts mdpi hdpi xhdpi xxhdpi and for hdpi+ keep that image for m remove
+
+also see try making it as full fledged app!!! so see
+
+
+also make a repo and commit-->
+
+
+
+
+
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E6FADAD6">
+
+    <ImageView
+        android:id="@+id/manypeople"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/manypeople"
+        android:layout_alignParentTop="true"/>
+
+    <TextView
+        android:id="@+id/t1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Names of the members Manually, one-by-one"
+        android:fontFamily="sans-serif-medium"
+        android:textColor="@color/black"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"
+        android:textSize="32sp"
+        android:textStyle="italic"
+        android:layout_below="@id/manypeople"
+        />
+
+    <LinearLayout
+        android:id="@+id/ll1"
+        android:layout_width="145dp"
+        android:layout_height="52dp"
+        android:layout_below="@id/t1"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/shape"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        >
+        <TextView
+            android:layout_width="0sp"
+            android:layout_height="48sp"
+            android:text="Go"
+            android:textColor="@color/black"
+            android:textStyle="bold|italic"
+            android:textSize="32sp"
+            android:layout_marginTop="3dp"
+            android:textAlignment="center"
+            android:layout_weight="1"
+            android:fontFamily="monospace"
+            android:gravity="center_horizontal" />
+
+        <ImageView
+            android:layout_width="0sp"
+            android:layout_height="35dp"
+            android:src="@drawable/arrow"
+            android:layout_marginTop="9dp"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/t2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Names of the members from a text file(.txt)"
+        android:fontFamily="sans-serif-medium"
+        android:textColor="@color/black"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:textSize="32sp"
+        android:textStyle="italic"
+        android:layout_below="@id/ll1"
+        />
+
+    <LinearLayout
+        android:id="@+id/ll2"
+        android:layout_width="145dp"
+        android:layout_height="52dp"
+        android:layout_below="@id/t2"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/shape"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:layout_marginBottom="24dp"
+        >
+        <TextView
+            android:layout_width="0sp"
+            android:layout_height="48sp"
+            android:text="Go"
+            android:textColor="@color/black"
+            android:textStyle="bold|italic"
+            android:textSize="32sp"
+            android:layout_marginTop="3dp"
+            android:textAlignment="center"
+            android:layout_weight="1"
+            android:fontFamily="monospace"
+            android:gravity="center_horizontal" />
+
+        <ImageView
+            android:layout_width="0sp"
+            android:layout_height="35dp"
+            android:src="@drawable/arrow"
+            android:layout_marginTop="9dp"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+
+<!--    <ImageView-->
+<!--        android:id="@+id/teamImg"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="256dp"-->
+<!--        android:layout_alignBottom="@id/ll2"-->
+<!--        android:layout_alignParentStart="true"-->
+<!--        android:layout_alignParentEnd="true"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_marginStart="2dp"-->
+<!--        android:layout_marginEnd="0dp"-->
+<!--        android:layout_marginBottom="-82dp"-->
+<!--        android:scaleType="fitStart"-->
+<!--        android:src="@drawable/ttblue"-->
+<!--        android:layout_marginLeft="2dp"-->
+<!--        android:layout_marginRight="0dp"-->
+<!--        android:layout_alignParentRight="true"-->
+<!--        android:layout_alignParentLeft="true" />-->
+</RelativeLayout>
+
+<!--#FADAD6-->
+
+
+<!--#FFCCD6-->
+
