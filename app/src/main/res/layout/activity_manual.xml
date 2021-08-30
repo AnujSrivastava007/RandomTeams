@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="#E6FADAD6"
     android:orientation="vertical"
+    android:padding="16dp"
     tools:context=".manual">
 <!--See how to make layout?? also see thsoe apps and inspire take
 also see coress and edit nae on clidl-->
@@ -16,8 +17,77 @@ also see coress and edit nae on clidl-->
         android:text="Enter all names one by one"
         android:fontFamily="sans-serif-medium"
         android:textColor="@color/black"
-        android:layout_marginTop="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="8dp"
         android:textSize="24sp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <EditText
+            android:id="@+id/names"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginRight="8dp"
+            android:hint="Type member name"
+            android:fontFamily="monospace"
+            android:layout_weight="4"/>
+
+<!--        SEE remove background field below. It gives button a dark and good look
+see what looks better later!! ALso see if color prob make new shape file for it.
+Keep it round. it looks good-->
+        <Button
+            android:id="@+id/addNameBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Add"
+            android:fontFamily="monospace"
+            android:background="@drawable/shape"
+            android:textColor="@color/black"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total Names: 0"
+        android:fontFamily="monospace"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="8dp"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+<!--Note this
+Where ever we need to populate data into a list, we just make a listview
+there and then populate it through java file
+Also if we want a listview with contents of our type
+then we create another xml and make the type as we want-->
+
+
+<!--    TODO:    Note VV IMP
+                    Making the ListView height MatchParent is vv imp
+                    if i make it wrap content, it adds items from bottom
+                    But that is not good
+                    SO always do it this way, in this way it will function as it should
+                    that displaying items from top-->
+        <ListView
+            android:id="@+id/nameList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/genBtn"
+            android:layout_marginBottom="8dp"/>
+
+        <Button
+            android:id="@+id/genBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:text="Generate List"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/black"/>
+    </RelativeLayout>
 </LinearLayout>
