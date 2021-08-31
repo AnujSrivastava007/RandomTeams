@@ -51,6 +51,7 @@ Keep it round. it looks good-->
     </LinearLayout>
 
     <TextView
+        android:id="@+id/countNames"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Total Names: 0"
