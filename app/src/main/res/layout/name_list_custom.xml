@@ -12,7 +12,9 @@
         android:layout_weight="8"
         tools:text="NAME1"
         android:textSize="20sp"
-        android:textColor="@color/black"/>
+        android:textColor="@color/black"
+        android:paddingBottom="8dp"
+        android:paddingTop="16dp"/>
 
     <TextView
         android:layout_width="0dp"

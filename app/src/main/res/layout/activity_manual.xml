@@ -31,6 +31,7 @@ also see coress and edit nae on clidl-->
             android:layout_marginBottom="16dp"
             android:layout_marginRight="8dp"
             android:hint="Type member name"
+            android:inputType="textCapWords"
             android:fontFamily="monospace"
             android:layout_weight="4"/>
 
