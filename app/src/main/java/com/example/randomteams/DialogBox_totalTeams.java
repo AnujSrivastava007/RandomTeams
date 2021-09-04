@@ -33,7 +33,6 @@ import com.example.randomteams.R;
  * but 2nd one works fine; Note this, and find why is it so??
  */
 public class DialogBox_totalTeams extends DialogFragment {
-//    private Intent i;
 
     //TODO: Show How many members name has been entered in dialog box
 
@@ -70,7 +69,7 @@ public class DialogBox_totalTeams extends DialogFragment {
                 .setPositiveButton("Randomize", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-//                        displayTeams();
+                        displayTeams();
                     }
                 });
                 //Adds message in dialog box
@@ -79,6 +78,21 @@ public class DialogBox_totalTeams extends DialogFragment {
     }
 
     private void displayTeams() {
-//        i = new Intent(this, DisplayTeams.class); //SEE why this error??
+        /**
+         * IMP NOTE
+         * when i was writing an explicit intent to open another activity I was writing as we write for all other such cases
+         * that is
+         *  Intent i = new Intent(this, DisplayTeams.class);
+         *
+         *  Now this here refers to the present context that is, this Fragment(Dialog Box), and Fragment is not a valid CONTEXT according to:
+         *   https://stackoverflow.com/questions/46047979/cannot-resolve-constructor-intent
+         *
+         *  But Activity is the correct context. So used getActivity() to pass the current activity as the context.
+         *  NOTE: Use of getActivity too
+         *
+         *  also Research and learn about what Fragments are.. see that udacity course. it has it
+         */
+        Intent i = new Intent(getActivity(), DisplayTeams.class); //SEE why this error?? --- SORTED
+        startActivity(i);
     }
 }

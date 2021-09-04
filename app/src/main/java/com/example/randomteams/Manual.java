@@ -97,7 +97,7 @@ public class Manual extends AppCompatActivity {
             Log.i("TEST", "addNamesClicked: Button CLicked, Text in box = " + names.getText().toString());
             namesArray.add(names.getText().toString());
             names.setText("");
-            //TODO: Do see how to make list display from top of screen and not from bottom
+            //Do see how to make list display from top of screen and not from bottom
             //DOne See xml and note the reason!!!
             namesList.setAdapter(adapter);
             counter++;
