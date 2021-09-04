@@ -7,7 +7,7 @@
     android:background="#E6FADAD6"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".manual">
+    tools:context=".Manual">
 <!--See how to make layout?? also see thsoe apps and inspire take
 also see coress and edit nae on clidl-->
 

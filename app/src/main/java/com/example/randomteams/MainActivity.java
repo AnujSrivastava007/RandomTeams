@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void manualActivity() {
-        i = new Intent(this, manual.class);
+        i = new Intent(this, Manual.class);
         startActivity(i);
     }
 }

@@ -13,16 +13,18 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.android.material.dialog.InsetDialogOnTouchListener;
+
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
-public class manual extends AppCompatActivity {
+public class Manual extends AppCompatActivity {
 
     private ArrayList<String> namesArray;
     private ArrayAdapter<String> adapter;
     private ListView namesList;
-    private Button addName;
+    private Button addName, generateTeams;
     private EditText names;
     private TextView crossDelNames, nameCounter;
     private int counter;
@@ -35,6 +37,7 @@ public class manual extends AppCompatActivity {
         counter = 0;
         namesArray = new ArrayList<>();             //Arraylist
         addName = findViewById(R.id.addNameBtn);    //Add button
+        generateTeams = findViewById(R.id.genBtn);  //Gen Btn
         namesList = findViewById(R.id.nameList);    //ListView
         names = findViewById(R.id.names);           //EditText
         nameCounter = findViewById(R.id.countNames);// TextView for names counting
@@ -53,6 +56,12 @@ public class manual extends AppCompatActivity {
             }
         });
 
+        generateTeams.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                makeTeamsDialogBox();
+            }
+        });
         /**
          * Error here. See maybe coz its ambiguous as to which cross is clicked. so many in ListView
          * See adding it in activity_manual and somethimg
@@ -66,6 +75,13 @@ public class manual extends AppCompatActivity {
 //            }
 //        });
 
+    }
+
+    private void makeTeamsDialogBox() {
+        //Making object of my DialogBox class
+        DialogBox_totalTeams dialogBox = new DialogBox_totalTeams();
+        // calling show on my dialog to present dialog box on screen
+        dialogBox.show(getSupportFragmentManager(), "MakeTeams Dialog");
     }
 
 //    private void deleteNames() {

@@ -9,5 +9,6 @@
         android:layout_height="wrap_content"
         android:hint="Number of Teams"
         android:textColor="@color/black"
-        android:fontFamily="monospace"/>
+        android:fontFamily="monospace"
+        android:layout_margin="16dp"/>
 </LinearLayout>

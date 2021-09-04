@@ -9,8 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.RandomTeams">
-        <activity android:name=".importFile"></activity>
-        <activity android:name=".manual" />
+        <activity android:name=".DisplayTeams"></activity>
+        <activity android:name=".importFile" />
+        <activity android:name=".Manual" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
