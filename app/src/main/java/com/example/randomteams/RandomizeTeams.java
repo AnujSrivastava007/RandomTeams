@@ -32,53 +32,49 @@ public class RandomizeTeams {
          */
         Arrays.fill(teams, "");
 
-        int memPerTeam = names.size()/totalTeams;
-        int extraMemInTeam = names.size() - memPerTeam * totalTeams;
+        int memPerTeam;
+        int extraMemInTeam;
+        if (totalTeams > 0) {
+            memPerTeam = names.size() / totalTeams;
+            extraMemInTeam = names.size() - memPerTeam * totalTeams;
 
-        
-        //try optimising it!!
-        for (int i = 0; i < totalTeams; i++) {
-            int rn=random.nextInt(names.size());
+            //try optimising it!!
+            for (int i = 0; i < totalTeams; i++) {
+                int rn = random.nextInt(names.size());
 
-            if (i < extraMemInTeam)
-                for (int j = 1; j <= memPerTeam + 1; j++) {
-                    if(!names.get(rn).isEmpty())
-                    {
-                        if (teams[i].isEmpty())
-                            teams[i]=(j)+". "+names.get(rn)+"\n";
-                        else
-                            teams[i]+=(j)+". "+names.get(rn)+"\n";
+                if (i < extraMemInTeam)
+                    for (int j = 1; j <= memPerTeam + 1; j++) {
+                        if (!names.get(rn).isEmpty()) {
+                            if (teams[i].isEmpty())
+                                teams[i] = (j) + ". " + names.get(rn) + "\n";
+                            else
+                                teams[i] += (j) + ". " + names.get(rn) + "\n";
 
-                        //replaces the element at 'rn' index with ""
-                        names.set(rn, "");
+                            //replaces the element at 'rn' index with ""
+                            names.set(rn, "");
+                        } else {
+                            --j;
+                            rn = random.nextInt(names.size());
+                        }
                     }
-                    else
-                    {
-                        --j;
-                        rn = random.nextInt(names.size());
-                    }
-                }
 
-            else
-                for (int j = 1; j <= memPerTeam; j++) {
-                    if(!names.get(rn).isEmpty())
-                    {
-                        if (teams[i].isEmpty())
-                            teams[i]=(j)+". "+names.get(rn)+"\n";
-                        else
-                            teams[i]+=(j)+". "+names.get(rn)+"\n";
+                else
+                    for (int j = 1; j <= memPerTeam; j++) {
+                        if (!names.get(rn).isEmpty()) {
+                            if (teams[i].isEmpty())
+                                teams[i] = (j) + ". " + names.get(rn) + "\n";
+                            else
+                                teams[i] += (j) + ". " + names.get(rn) + "\n";
 
-                        //replaces the element at 'rn' index with ""
-                        names.set(rn, "");
+                            //replaces the element at 'rn' index with ""
+                            names.set(rn, "");
+                        } else {
+                            --j;
+                            rn = random.nextInt(names.size());
+                        }
                     }
-                    else
-                    {
-                        --j;
-                        rn = random.nextInt(names.size());
-                    }
-                }
+            }
         }
-        
         return teams;
     }
 }

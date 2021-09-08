@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+<!--    See other types also like numberdecimal and all what these means precisely-->
     <EditText
         android:id="@+id/totalTeams"
         android:layout_width="match_parent"
@@ -11,5 +12,8 @@
         android:hint="Number of Teams"
         android:textColor="@color/black"
         android:fontFamily="monospace"
+
+        android:inputType="number"
+
         android:layout_margin="16dp"/>
 </LinearLayout>

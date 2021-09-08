@@ -78,6 +78,7 @@ public class Manual extends AppCompatActivity {
     }
 
     private void makeTeamsDialogBox() {
+        RandomizeTeams random = new RandomizeTeams(namesArray); // sends names list to randomize class to perform task
         //Making object of my DialogBox class
         DialogBox_totalTeams dialogBox = new DialogBox_totalTeams();
         // calling show on my dialog to present dialog box on screen
@@ -94,7 +95,7 @@ public class Manual extends AppCompatActivity {
     private void addNamesClicked() {
         //TODO: also add condition when only space is there
         if(!names.getText().toString().isEmpty()) {
-            Log.i("TEST", "addNamesClicked: Button CLicked, Text in box = " + names.getText().toString());
+//            Log.i("TEST", "addNamesClicked: Button CLicked, Text in box = " + names.getText().toString());
             namesArray.add(names.getText().toString());
             names.setText("");
             //Do see how to make list display from top of screen and not from bottom
