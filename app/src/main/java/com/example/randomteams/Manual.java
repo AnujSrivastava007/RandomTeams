@@ -133,24 +133,6 @@ public class Manual extends AppCompatActivity implements DialogBox_totalTeams.Di
         Log.i("_________CHECK2________", "displayTeams: entered Value "+totalTeamsEntered);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         if (totalTeamsEntered > 0) {
             rt = new RandomizeTeams(totalTeamsEntered, namesArray);
 
@@ -170,6 +152,13 @@ public class Manual extends AppCompatActivity implements DialogBox_totalTeams.Di
              *  also Research and learn about what Fragments are.. see that udacity course. it has it
              */
             Intent i = new Intent(this, DisplayTeams.class); //SEE why this error?? --- SORTED
+
+            /**
+             * We can also pass data from one activity to another using intents.
+             * .putExtra does similar thing using key-value system.
+             * For more info, refer:
+             * https://stackoverflow.com/questions/6707900/pass-a-string-from-one-activity-to-another-activity-in-android
+             */
             i.putExtra("ansList", rt.makeTeams());
 //        String namesArrayString[] = new String[namesArray.size()];
 //        for (int index = 0; index < namesArray.size(); index++) {

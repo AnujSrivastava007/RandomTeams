@@ -21,6 +21,11 @@ public class DisplayTeams extends AppCompatActivity {
         ListView randomTeamsList = findViewById(R.id.randomTeamsList);
 
 
+        /**
+         * Below 2 line are used to retrieve the info passed from calling activity to this called activity.
+         * for more info, refer
+         * https://stackoverflow.com/questions/6707900/pass-a-string-from-one-activity-to-another-activity-in-android
+         */
         Intent intent = getIntent();
         String[] finalList = intent.getExtras().getStringArray("ansList");
         //ArrayAdapter of type: (context, int, int, T[]) used!!
