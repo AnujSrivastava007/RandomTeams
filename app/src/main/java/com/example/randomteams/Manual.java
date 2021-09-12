@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.dialog.InsetDialogOnTouchListener;
 
@@ -19,7 +20,7 @@ import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
-public class Manual extends AppCompatActivity {
+public class Manual extends AppCompatActivity implements DialogBox_totalTeams.DialogListener {
 
     private ArrayList<String> namesArray;
     private ArrayAdapter<String> adapter;
@@ -78,7 +79,7 @@ public class Manual extends AppCompatActivity {
     }
 
     private void makeTeamsDialogBox() {
-        RandomizeTeams random = new RandomizeTeams(namesArray); // sends names list to randomize class to perform task
+//        RandomizeTeams random = new RandomizeTeams(namesArray); // sends names list to randomize class to perform task
         //Making object of my DialogBox class
         DialogBox_totalTeams dialogBox = new DialogBox_totalTeams();
         // calling show on my dialog to present dialog box on screen
@@ -104,5 +105,110 @@ public class Manual extends AppCompatActivity {
             counter++;
             nameCounter.setText("Total Names: " + counter);
         }
+    }
+
+
+    @Override
+    public void applyText(String totalTeamsEnteredString) {
+        //sending the integer value of teams number to Randomize class to make further operations. Using Constructors.
+        // Also see if theres another method by which a value can be sent from one class to another.
+
+        int totalTeamsEntered = 0;
+        try {
+            totalTeamsEntered = Integer.parseInt(totalTeamsEnteredString);
+        } catch (NumberFormatException e) {
+            Toast.makeText(this, "Enter a Valid Value, Not to be kept empty", Toast.LENGTH_LONG).show();
+            e.printStackTrace();
+        }
+
+        /**
+         * See no use of try catch when i made edittext to enter only numeric values!!!
+         */
+//        try//see non int??
+//        {
+        //Also condider case of negative number. It shouldnt be entered
+        RandomizeTeams rt;
+//
+        Log.i("_________CHECK1________", "displayTeams: entered Value in string "+totalTeamsEnteredString); /// WORKING FINE just see some problem with intent or activity
+        Log.i("_________CHECK2________", "displayTeams: entered Value "+totalTeamsEntered);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        if (totalTeamsEntered > 0) {
+            rt = new RandomizeTeams(totalTeamsEntered, namesArray);
+
+
+            /**
+             * IMP NOTE
+             * when i was writing an explicit intent to open another activity I was writing as we write for all other such cases
+             * that is
+             *  Intent i = new Intent(this, DisplayTeams.class);
+             *
+             *  Now this here refers to the present context that is, this Fragment(Dialog Box), and Fragment is not a valid CONTEXT according to:
+             *   https://stackoverflow.com/questions/46047979/cannot-resolve-constructor-intent
+             *
+             *  But Activity is the correct context. So used getActivity() to pass the current activity as the context.
+             *  NOTE: Use of getActivity too
+             *
+             *  also Research and learn about what Fragments are.. see that udacity course. it has it
+             */
+            Intent i = new Intent(this, DisplayTeams.class); //SEE why this error?? --- SORTED
+            i.putExtra("ansList", rt.makeTeams());
+//        String namesArrayString[] = new String[namesArray.size()];
+//        for (int index = 0; index < namesArray.size(); index++) {
+//            namesArrayString[index] = namesArray.get(index);
+//        }
+//            i.putExtra("ansList", namesArrayString);
+            startActivity(i);
+
+        }
+        else
+            Toast.makeText(this, "Number of teams cant be less than or equal to 0", Toast.LENGTH_SHORT).show();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//        }
+//        catch (Exception e)
+//        {
+//            Log.i("_________CHECK2________", "displayTeams: entered Value "+totalTeams.getText().toString());
+//            Toast.makeText(getActivity(), e.toString(), Toast.LENGTH_LONG).show();
+//        }
+
     }
 }

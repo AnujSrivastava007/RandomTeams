@@ -12,14 +12,15 @@ public class RandomizeTeams {
     }
 
     //Constructor to get totalTeams from DialogBox_totalTeams
-    public RandomizeTeams(int totalTeams) {
+    public RandomizeTeams(int totalTeams, ArrayList<String> namesArray) {
         this.totalTeams = totalTeams;
-    }
-
-    //Constructor to get ArrayList of names from Manual
-    public RandomizeTeams(ArrayList<String> namesArray) {
         names = namesArray;
     }
+
+//    //Constructor to get ArrayList of names from Manual
+//    public RandomizeTeams(ArrayList<String> namesArray) {
+//        names = namesArray;
+//    }
 
     public String[] makeTeams() {
         Random random=new Random();
