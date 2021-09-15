@@ -12,12 +12,14 @@ import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 
-public class crossDelAdapter extends ArrayAdapter<String> {
+public class CrossDelAdapter extends ArrayAdapter<String> {
 
     private ArrayList<String> namesList;
-    public crossDelAdapter(Context context, ArrayList<String> namesList) {
+    private TextView counterTextView;
+    public CrossDelAdapter(Context context, ArrayList<String> namesList, TextView counterTextView) {
         super(context, 0, namesList);
         this.namesList = namesList;
+        this.counterTextView = counterTextView;
     }
 
     @NonNull
@@ -46,5 +48,8 @@ public class crossDelAdapter extends ArrayAdapter<String> {
     private void deleteNames(ArrayList<String> namesList, int position) {
         namesList.remove(position);
         notifyDataSetChanged();
+//        int counter = Integer.parseInt(counterTextView.getText().toString().substring(13));
+        int counter = namesList.size();
+        counterTextView.setText("Total Names: " + counter);
     }
 }
