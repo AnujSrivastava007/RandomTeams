@@ -36,7 +36,8 @@ public class DisplayTeams extends AppCompatActivity {
         /*
         Note this is used when there are more than one views. so giving second id is to tell it, it needs to populate it.
          */
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.display_list_layout, R.id.namesRandomList, finalList);
+
+        TeamAdapter adapter = new TeamAdapter(this, finalList);
         randomTeamsList.setAdapter(adapter);
 
     }
