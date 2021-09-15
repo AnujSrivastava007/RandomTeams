@@ -49,6 +49,10 @@ public class CrossDelAdapter extends ArrayAdapter<String> {
         namesList.remove(position);
         notifyDataSetChanged();
 //        int counter = Integer.parseInt(counterTextView.getText().toString().substring(13));
+        /**
+         * https://stackoverflow.com/a/5497639
+         * link to explanation of above code
+         */
         int counter = namesList.size();
         counterTextView.setText("Total Names: " + counter);
     }
