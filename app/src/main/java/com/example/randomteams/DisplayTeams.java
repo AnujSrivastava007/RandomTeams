@@ -28,6 +28,10 @@ public class DisplayTeams extends AppCompatActivity {
          */
         Intent intent = getIntent();
         String[] finalList = intent.getExtras().getStringArray("ansList");
+
+        /**
+         * TODO: Make a custom ArrayAdapter to display Team 1, Team 2 etc as heading, so its a good way to learn it and implement. Grab it.!!
+         */
         //ArrayAdapter of type: (context, int, int, T[]) used!!
         /*
         Note this is used when there are more than one views. so giving second id is to tell it, it needs to populate it.

@@ -71,8 +71,8 @@ public class Manual extends AppCompatActivity implements DialogBox_totalTeams.Di
 //        crossDelNames.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
-////                deleteNames();
-//                Log.i("TEST", "onClick: Cross view CLICKED");
+//                deleteNames();
+////                Log.i("TEST", "onClick: Cross view CLICKED");
 //            }
 //        });
 
@@ -86,12 +86,14 @@ public class Manual extends AppCompatActivity implements DialogBox_totalTeams.Di
         dialogBox.show(getSupportFragmentManager(), "MakeTeams Dialog");
     }
 
-//    private void deleteNames() {
+    private void deleteNames() {
+        Toast.makeText(this, "onClick: Cross view CLICKED", Toast.LENGTH_SHORT).show();
+
 //        String nameDeleted = names.getText().toString();
 //        int delNameIndex = namesArray.indexOf(nameDeleted);
 //        namesArray.remove(delNameIndex);
 //        Log.i("Test", "deleteNames: nameDeleted: ***" + nameDeleted + "*** at index= " + delNameIndex+"New element at that index = "+namesArray.get(delNameIndex));
-//    }
+    }
 
     private void addNamesClicked() {
         //TODO: also add condition when only space is there

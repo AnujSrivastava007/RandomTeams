@@ -80,7 +80,7 @@ then we create another xml and make the type as we want-->
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_above="@id/genBtn"
-            android:layout_marginBottom="8dp"/>
+            android:layout_marginBottom="8dp" />
 
         <Button
             android:id="@+id/genBtn"
