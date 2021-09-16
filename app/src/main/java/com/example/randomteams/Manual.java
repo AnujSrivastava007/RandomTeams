@@ -3,6 +3,7 @@ package com.example.randomteams;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -16,20 +17,33 @@ import java.util.ArrayList;
 
 public class Manual extends AppCompatActivity implements DialogBox_totalTeams.DialogListener {
 
-    private ArrayList<String> namesArray;
+    private ArrayList<String> namesArray;//, namesArray1;
     private CrossDelAdapter adapter;
     private ListView namesList;
     private Button addName, generateTeams;
     private EditText names;
     private TextView crossDelNames, nameCounter;
     private int counter;
+    private RetainList retainList;
+
+
+//    /**
+//     * Below are the 3 constants, Used in saving instances of app/ activity
+//     * They are basically used as Keys, and mapped to there respective data below.(?)
+//     */
+//    public static final String SHARED_PREFS = "sharedPrefs";
+//    public static final String TOTAL_NAMES = "totalNames";
+//    public static final String LIST = "namesList";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manual);
 
+//        Toast.makeText(this, "OnCreate Invoked", Toast.LENGTH_LONG).show();
+
         counter = 0;
+//        retainList = new RetainList();
         namesArray = new ArrayList<>();             //Arraylist
         addName = findViewById(R.id.addNameBtn);    //Add button
         generateTeams = findViewById(R.id.genBtn);  //Gen Btn
@@ -44,6 +58,10 @@ public class Manual extends AppCompatActivity implements DialogBox_totalTeams.Di
          */
 
         //Below is the custom Adapter
+
+//        retainList.setNamesArrayList(namesArray);
+//        namesArray1 = retainList.getNamesArrayList();
+
         adapter = new CrossDelAdapter(this, namesArray, nameCounter);
         addName.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,16 +83,47 @@ public class Manual extends AppCompatActivity implements DialogBox_totalTeams.Di
          *
          * FOUND SOLUTION:
          * This is not to be done here. It is done in the custom adapter class!
+         *
+         * //        crossDelNames.setOnClickListener(new View.OnClickListener() {
+         * //            @Override
+         * //            public void onClick(View v) {
+         * //                deleteNames();
+         * ////                Log.i("TEST", "onClick: Cross view CLICKED");
+         * //            }
+         * //        });
          */
-//        crossDelNames.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                deleteNames();
-////                Log.i("TEST", "onClick: Cross view CLICKED");
-//            }
-//        });
 
+
+//        /**
+//         * Below CODE is for savind the instance of this Manual.java Activity
+//         * So that we can reload all of it at the time of restart of app/Activity/Change in Config.
+//         *
+//         * We also need 3 constants for this, and some other Variables which will be declared
+//         * before OnCreate method above!!
+//         *
+//         * saveData() :
+//         * The code in this method is used to save the instance of app/activity
+//         */
+//
+//        saveData();
+
+//        Toast.makeText(this, "End of OnCreate", Toast.LENGTH_LONG).show();
     }
+
+//    /**
+//     * SharedPreferences is the interface used here.(LEARN MORE abt it)
+//     * SHARED_PREFS : Constant we created
+//     * MODE_PRIVATE : This means no other app can change our shared Preferences
+//     *
+//     * Refer:
+//     * https://youtu.be/fJEFZ6EOM9o
+//     */
+//    public void saveData() {
+//        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+//        SharedPreferences.Editor editor = sharedPreferences.edit();
+//        //Now with our editor we will save our variables
+////        editor.put
+//    }
 
     private void makeTeamsDialogBox() {
 //        RandomizeTeams random = new RandomizeTeams(namesArray); // sends names list to randomize class to perform task
@@ -98,21 +147,18 @@ public class Manual extends AppCompatActivity implements DialogBox_totalTeams.Di
         if(!names.getText().toString().isEmpty()) {
 //            Log.i("TEST", "addNamesClicked: Button CLicked, Text in box = " + names.getText().toString());
             namesArray.add(names.getText().toString());
+//            retainList.addNamesToArrayList(names.getText().toString());
             names.setText("");
             //Do see how to make list display from top of screen and not from bottom
             //DOne See xml and note the reason!!!
             namesList.setAdapter(adapter);
             increaseCounter();
+//            Toast.makeText(this, "List:\n" + namesArray, Toast.LENGTH_LONG).show();
         }
     }
 
     public void increaseCounter() {
         counter = namesArray.size();
-        nameCounter.setText("Total Names: " + counter);
-    }
-
-    public void decreaseCounter() {
-        counter--;
         nameCounter.setText("Total Names: " + counter);
     }
 
@@ -138,8 +184,8 @@ public class Manual extends AppCompatActivity implements DialogBox_totalTeams.Di
         //Also condider case of negative number. It shouldnt be entered
         RandomizeTeams rt;
 //
-        Log.i("_________CHECK1________", "displayTeams: entered Value in string "+totalTeamsEnteredString); /// WORKING FINE just see some problem with intent or activity
-        Log.i("_________CHECK2________", "displayTeams: entered Value "+totalTeamsEntered);
+//        Log.i("_________CHECK1________", "displayTeams: entered Value in string "+totalTeamsEnteredString); /// WORKING FINE just see some problem with intent or activity
+//        Log.i("_________CHECK2________", "displayTeams: entered Value "+totalTeamsEntered);
 
 
         if (totalTeamsEntered > 0) {
@@ -175,6 +221,10 @@ public class Manual extends AppCompatActivity implements DialogBox_totalTeams.Di
 //        }
 //            i.putExtra("ansList", namesArrayString);
             startActivity(i);
+            finish(); // TODO: Note this removes this activity from Activity stack and when we press back we land up on the Launch Activity here
+
+//            Toast.makeText(this, "Closing", Toast.LENGTH_LONG).show();
+//            Toast.makeText(DisplayTeams.class, "Opened DisplayTeams", Toast.LENGTH_LONG).show();
 
         }
         else
