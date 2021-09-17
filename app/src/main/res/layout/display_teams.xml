@@ -38,7 +38,7 @@
             android:layout_height="wrap_content"
             android:text="Copy"
             android:id="@+id/copyBtn"
-            android:background="@drawable/shape"
+            android:background="@drawable/shape1"
             android:layout_marginBottom="16dp"/>
 
 <!--        //Add this feature Later-->
