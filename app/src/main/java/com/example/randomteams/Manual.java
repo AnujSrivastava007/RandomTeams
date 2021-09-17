@@ -168,67 +168,76 @@ public class Manual extends AppCompatActivity implements DialogBox_totalTeams.Di
         //sending the integer value of teams number to Randomize class to make further operations. Using Constructors.
         // Also see if theres another method by which a value can be sent from one class to another.
 
-        int totalTeamsEntered = 0;
-        try {
-            totalTeamsEntered = Integer.parseInt(totalTeamsEnteredString);
-        } catch (NumberFormatException e) {
-            Toast.makeText(this, "Enter a Valid Value, Not to be kept empty", Toast.LENGTH_LONG).show();
-            e.printStackTrace();
+        if (Integer.parseInt(totalTeamsEnteredString) > namesArray.size())
+        {
+            Toast.makeText(this, "***Total Teams should be less than Total members***", Toast.LENGTH_SHORT).show();
         }
+        else
+        {
+            int totalTeamsEntered = 0;
+            try {
+                totalTeamsEntered = Integer.parseInt(totalTeamsEnteredString);
+            } catch (NumberFormatException e) {
+                Toast.makeText(this, "Enter a Valid Value, Not to be kept empty", Toast.LENGTH_LONG).show();
+                e.printStackTrace();
+            }
 
-        /**
-         * See no use of try catch when i made edittext to enter only numeric values!!!
-         */
+            /**
+             * See no use of try catch when i made edittext to enter only numeric values!!!
+             */
 //        try//see non int??
 //        {
-        //Also condider case of negative number. It shouldnt be entered
-        RandomizeTeams rt;
+            //Also condider case of negative number. It shouldnt be entered
+            RandomizeTeams rt;
 //
 //        Log.i("_________CHECK1________", "displayTeams: entered Value in string "+totalTeamsEnteredString); /// WORKING FINE just see some problem with intent or activity
 //        Log.i("_________CHECK2________", "displayTeams: entered Value "+totalTeamsEntered);
 
 
-        if (totalTeamsEntered > 0) {
-            rt = new RandomizeTeams(totalTeamsEntered, namesArray);
+            if (totalTeamsEntered > 0) {
+                rt = new RandomizeTeams(totalTeamsEntered, namesArray);
 
 
-            /**
-             * IMP NOTE
-             * when i was writing an explicit intent to open another activity I was writing as we write for all other such cases
-             * that is
-             *  Intent i = new Intent(this, DisplayTeams.class);
-             *
-             *  Now this here refers to the present context that is, this Fragment(Dialog Box), and Fragment is not a valid CONTEXT according to:
-             *   https://stackoverflow.com/questions/46047979/cannot-resolve-constructor-intent
-             *
-             *  But Activity is the correct context. So used getActivity() to pass the current activity as the context.
-             *  NOTE: Use of getActivity too
-             *
-             *  also Research and learn about what Fragments are.. see that udacity course. it has it
-             */
-            Intent i = new Intent(this, DisplayTeams.class); //SEE why this error?? --- SORTED
+                /**
+                 * IMP NOTE
+                 * when i was writing an explicit intent to open another activity I was writing as we write for all other such cases
+                 * that is
+                 *  Intent i = new Intent(this, DisplayTeams.class);
+                 *
+                 *  Now this here refers to the present context that is, this Fragment(Dialog Box), and Fragment is not a valid CONTEXT according to:
+                 *   https://stackoverflow.com/questions/46047979/cannot-resolve-constructor-intent
+                 *
+                 *  But Activity is the correct context. So used getActivity() to pass the current activity as the context.
+                 *  NOTE: Use of getActivity too
+                 *
+                 *  also Research and learn about what Fragments are.. see that udacity course. it has it
+                 */
+                Intent i = new Intent(this, DisplayTeams.class); //SEE why this error?? --- SORTED
 
-            /**
-             * We can also pass data from one activity to another using intents.
-             * .putExtra does similar thing using key-value system.
-             * For more info, refer:
-             * https://stackoverflow.com/questions/6707900/pass-a-string-from-one-activity-to-another-activity-in-android
-             */
-            i.putExtra("ansList", rt.makeTeams());
+                /**
+                 * We can also pass data from one activity to another using intents.
+                 * .putExtra does similar thing using key-value system.
+                 * For more info, refer:
+                 * https://stackoverflow.com/questions/6707900/pass-a-string-from-one-activity-to-another-activity-in-android
+                 */
+                i.putExtra("ansList", rt.makeTeams());
+                i.putExtra("originalList", namesArray);
 //        String namesArrayString[] = new String[namesArray.size()];
 //        for (int index = 0; index < namesArray.size(); index++) {
 //            namesArrayString[index] = namesArray.get(index);
 //        }
 //            i.putExtra("ansList", namesArrayString);
-            startActivity(i);
-            finish(); // TODO: Note this removes this activity from Activity stack and when we press back we land up on the Launch Activity here
+                startActivity(i);
+                finish(); // TODO: Note this removes this activity from Activity stack and when we press back we land up on the Launch Activity here
 
 //            Toast.makeText(this, "Closing", Toast.LENGTH_LONG).show();
 //            Toast.makeText(DisplayTeams.class, "Opened DisplayTeams", Toast.LENGTH_LONG).show();
 
+            }
+            else
+                Toast.makeText(this, "Number of teams cant be less than or equal to 0", Toast.LENGTH_SHORT).show();
         }
-        else
-            Toast.makeText(this, "Number of teams cant be less than or equal to 0", Toast.LENGTH_SHORT).show();
+
 
 
 
