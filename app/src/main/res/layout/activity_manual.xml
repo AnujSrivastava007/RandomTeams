@@ -88,8 +88,9 @@ then we create another xml and make the type as we want-->
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:text="Generate List"
             android:layout_gravity="center_horizontal"
-            android:textColor="@color/black"/>
+            android:background="@drawable/shape1"
+            android:text="Generate List"
+            android:textColor="@color/black" />
     </RelativeLayout>
 </LinearLayout>
