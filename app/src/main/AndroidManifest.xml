@@ -9,10 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.RandomTeams">
-        <activity android:name=".DisplayTeams"></activity>
-        <activity android:name=".importFile" />
-        <activity android:name=".Manual" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".DisplayTeams"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".importFile"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Manual"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".MainActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
