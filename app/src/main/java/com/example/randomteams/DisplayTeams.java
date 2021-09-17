@@ -103,6 +103,9 @@ public class DisplayTeams extends AppCompatActivity {
         ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
         ClipData clip = ClipData.newPlainText(COPY_LIST, copiedListTeams);
         clipboard.setPrimaryClip(clip);
+
+        Toast.makeText(this, "__Teams Copied__", Toast.LENGTH_SHORT).show();
+
     }
 
 
