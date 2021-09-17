@@ -62,7 +62,15 @@ public class Manual extends AppCompatActivity implements DialogBox_totalTeams.Di
 //        retainList.setNamesArrayList(namesArray);
 //        namesArray1 = retainList.getNamesArrayList();
 
-        adapter = new CrossDelAdapter(this, namesArray, nameCounter);
+        /**
+         * NOTE:
+         * to gray out and make button unclickable, used this,
+         *
+         * https://stackoverflow.com/a/5019884
+         */
+        generateTeams.setEnabled(false);
+
+        adapter = new CrossDelAdapter(this, namesArray, nameCounter, generateTeams);
         addName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -143,8 +151,10 @@ public class Manual extends AppCompatActivity implements DialogBox_totalTeams.Di
 //    }
 
     private void addNamesClicked() {
+
         //TODO: also add condition when only space is there
         if(!names.getText().toString().isEmpty()) {
+            generateTeams.setEnabled(true);
 //            Log.i("TEST", "addNamesClicked: Button CLicked, Text in box = " + names.getText().toString());
             namesArray.add(names.getText().toString());
 //            retainList.addNamesToArrayList(names.getText().toString());

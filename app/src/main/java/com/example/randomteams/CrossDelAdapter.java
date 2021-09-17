@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,10 +17,13 @@ public class CrossDelAdapter extends ArrayAdapter<String> {
 
     private ArrayList<String> namesList;
     private TextView counterTextView;
-    public CrossDelAdapter(Context context, ArrayList<String> namesList, TextView counterTextView) {
+    private Button genTeamsBtn;
+
+    public CrossDelAdapter(Context context, ArrayList<String> namesList, TextView counterTextView, Button genTeamsBtn) {
         super(context, 0, namesList);
         this.namesList = namesList;
         this.counterTextView = counterTextView;
+        this.genTeamsBtn = genTeamsBtn;
     }
 
     @NonNull
@@ -48,6 +52,10 @@ public class CrossDelAdapter extends ArrayAdapter<String> {
     private void deleteNames(ArrayList<String> namesList, int position) {
         namesList.remove(position);
         notifyDataSetChanged();
+
+        // To set Button Disabled when list empty
+        if (namesList.isEmpty())
+            genTeamsBtn.setEnabled(false);
 //        int counter = Integer.parseInt(counterTextView.getText().toString().substring(13));
         /**
          * https://stackoverflow.com/a/5497639
