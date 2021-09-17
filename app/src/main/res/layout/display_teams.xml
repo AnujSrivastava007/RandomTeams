@@ -1,12 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ListView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android = "http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/randomTeamsList"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#E6FADAD6"
-    tools:context=".DisplayTeams"
-    android:padding="16dp">
+    tools:context=".DisplayTeams">
 
-</ListView>
+    <TextView
+        android:id="@+id/heading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Random Teams:"
+        android:fontFamily="sans-serif-medium"
+        android:textColor="@color/black"
+        android:paddingLeft="16dp"
+        android:paddingTop="16dp"
+        android:textSize="24sp"/>
+
+    <ListView
+        android:id="@+id/randomTeamsList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/linearLayout"
+        android:layout_below="@id/heading"
+        android:padding="16dp" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Copy"
+            android:id="@+id/copyBtn"
+            android:background="@drawable/shape"
+            android:layout_margin="16dp"/>
+
+<!--        //Add this feature Later-->
+<!--        <Button-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Randomize"-->
+<!--            android:id="@+id/randomizeBtn"-->
+<!--            android:background="@drawable/shape"-->
+<!--            android:layout_margin="16dp"/>-->
+
+    </LinearLayout>
+
+</RelativeLayout>
