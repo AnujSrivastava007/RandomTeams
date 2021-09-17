@@ -39,7 +39,7 @@
             android:text="Copy"
             android:id="@+id/copyBtn"
             android:background="@drawable/shape"
-            android:layout_margin="16dp"/>
+            android:layout_marginBottom="16dp"/>
 
 <!--        //Add this feature Later-->
 <!--        <Button-->
