@@ -32,7 +32,7 @@ public class DialogBox_totalTeams extends AppCompatDialogFragment {
         View view = inflater.inflate(R.layout.dialog_custom_layout, null);
 
         builder.setView(view)
-                .setTitle("Enter teamNum")
+                .setTitle("Enter Number of teams to be made:")
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
