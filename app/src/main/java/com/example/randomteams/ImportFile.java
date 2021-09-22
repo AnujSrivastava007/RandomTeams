@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class importFile extends AppCompatActivity {
+public class ImportFile extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

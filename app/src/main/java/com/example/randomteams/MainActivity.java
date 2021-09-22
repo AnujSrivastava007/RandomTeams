@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void importFileActivity() {
-        i = new Intent(this, importFile.class);
+        i = new Intent(this, ImportFile.class);
         startActivity(i);
     }
 
