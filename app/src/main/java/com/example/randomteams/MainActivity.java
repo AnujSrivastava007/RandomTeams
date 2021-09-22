@@ -2,7 +2,10 @@ package com.example.randomteams;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -11,10 +14,14 @@ public class MainActivity extends AppCompatActivity {
 
     private LinearLayout layout1, layout2;
     private Intent i;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
 
         layout1 = findViewById(R.id.ll1);
         layout2 = findViewById(R.id.ll2);
