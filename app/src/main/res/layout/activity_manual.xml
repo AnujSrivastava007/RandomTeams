@@ -14,7 +14,7 @@ also see coress and edit nae on clidl-->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Enter all names one by one"
+        android:text="Enter all names:"
         android:fontFamily="sans-serif-medium"
         android:textColor="@color/black"
         android:layout_marginBottom="8dp"
