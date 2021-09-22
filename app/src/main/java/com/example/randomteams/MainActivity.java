@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void manualActivity() {
         i = new Intent(this, Manual.class);
+        i.putExtra("intentID", "from MainActivity");
         startActivity(i);
     }
 }
