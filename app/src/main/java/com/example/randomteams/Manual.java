@@ -71,6 +71,34 @@ public class Manual extends AppCompatActivity implements DialogBox_totalTeams.Di
         generateTeams.setEnabled(false);
 
         adapter = new CrossDelAdapter(this, namesArray, nameCounter, generateTeams);
+
+        /**
+         * Below code is for identifying the intent that called this activity
+         * https://stackoverflow.com/a/11529643
+         */
+        Intent intent = getIntent();
+        if (intent.getExtras().getString("intentID").equals("from ImportFile")) {
+            namesArray = intent.getExtras().getStringArrayList("Names");
+            int length = namesArray.size();
+
+//            Toast.makeText(this, namesArray.toString(), Toast.LENGTH_LONG).show();
+            //SEE THERES jjust one problem, untill i add another name or maybe press add button, it doesnt show up
+            //Rectify this and i am done!!
+
+            // SOLVED:
+            /*
+            By declaring adapter here inside if condition, it works, otherwise it did not work, so see this!
+             */
+            adapter = new CrossDelAdapter(this, namesArray, nameCounter, generateTeams);
+            generateTeams.setEnabled(true);
+            namesList.setAdapter(adapter);
+            increaseCounter();
+//            for (int i = 0; i < length; i++) {
+//                addNamesIntent();// see need to be modified
+//            }
+        }
+
+
         addName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -116,7 +144,9 @@ public class Manual extends AppCompatActivity implements DialogBox_totalTeams.Di
 //        saveData();
 
 //        Toast.makeText(this, "End of OnCreate", Toast.LENGTH_LONG).show();
+
     }
+
 
 //    /**
 //     * SharedPreferences is the interface used here.(LEARN MORE abt it)
@@ -149,6 +179,8 @@ public class Manual extends AppCompatActivity implements DialogBox_totalTeams.Di
 ////        namesArray.remove(delNameIndex);
 ////        Log.i("Test", "deleteNames: nameDeleted: ***" + nameDeleted + "*** at index= " + delNameIndex+"New element at that index = "+namesArray.get(delNameIndex));
 //    }
+
+
 
     private void addNamesClicked() {
 

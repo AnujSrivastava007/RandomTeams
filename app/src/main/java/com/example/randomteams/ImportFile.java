@@ -20,6 +20,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class ImportFile extends AppCompatActivity {
 
@@ -54,6 +55,8 @@ public class ImportFile extends AppCompatActivity {
 
     /**
      * NEED To understand all of this!!
+     * Done from:
+     * https://youtu.be/J6azVvt-9KE
      */
 
     private void attachFile() {
@@ -73,9 +76,10 @@ public class ImportFile extends AppCompatActivity {
 
 
     //read content of file
-    private String readText(String input) {
+    private ArrayList<String> readText(String input) {
         File file = new File(input);
-        StringBuilder text = new StringBuilder();
+//        StringBuilder text = new StringBuilder();
+        ArrayList<String> text = new ArrayList<>();
         try {
             BufferedReader br = new BufferedReader(new FileReader(file));
             String line;
@@ -85,10 +89,20 @@ public class ImportFile extends AppCompatActivity {
             Must resolve this, maybe thats what doing it wrong!!
              */
 
+            /**
+             * See consider a situation where a line null comes and then there are all the names, SO
+             * this below condition would skip it, See how to counter.
+             *
+             * or is it that it is considered new line and not null
+             */
             while((line=br.readLine()) != null) {
 //                Log.i("_______TEST1_______", "readText: File lines: " + line);
-                text.append(line);
-                text.append("\n");
+//                text.append(line);
+//                text.append("\n");
+
+                if(!line.equals(" ") && !line.equals("\n"))
+                    text.add(line);
+
             }
 //            Log.i("_______TEST2_______", "readText: File lines: " + line);
             br.close();
@@ -97,7 +111,7 @@ public class ImportFile extends AppCompatActivity {
 //            Log.i("_______TEST3_______", "readText: Entered catch");
             e.printStackTrace();
         }
-        return text.toString();
+        return text;
     }
 
 
@@ -131,9 +145,12 @@ public class ImportFile extends AppCompatActivity {
                  * This could work only in mine, so see how to make it general
                  */
                 path = "/storage/emulated/0/" + path;
-                Toast.makeText(this, readText(path), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(this, readText(path).toString(), Toast.LENGTH_SHORT).show();
 //                display.setText("The data read is:\n" + readText(path));
-                Intent intent = new Intent(this, MainActivity.class);
+
+                Intent intent = new Intent(this, Manual.class);
+                intent.putExtra("Names", readText(path));
+                intent.putExtra("intentID", "from ImportFile");
                 startActivity(intent);
             }
         }
